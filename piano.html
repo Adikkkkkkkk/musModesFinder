@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Piano</title>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+	<header class='header'>
+		<div class="container">
+			<!-- INSTRUMENT MODE -->
+			<div class="header-box">
+				<div class="header_instr-mode">
+					<!-- Guitar Mode -->
+					<a href='index.html' target='_blank' class="btn btn_instruments">
+						<img src="./img/header/guitar_1n96kd6ki4lg.svg" alt="Guitar">
+					</a>
+					<!-- Piano Mode -->
+					<a href='#!' class="btn btn_instruments active-mode">
+						<img src="./img/header/piano_13bulr5l7iay.svg" alt="Piano">
+					</a>
+				</div> <!-- /INSTRUMENT-MODE -->
+
+				<!-- Root Notes -->
+				<ul class="root-notes">
+					<li><button class="btn root-note">C</button></li>
+					<li><button class="btn root-note">C#</button></li>
+					<li><button class="btn root-note">D</button></li>
+					<li><button class="btn root-note">D#</button></li>
+					<li><button class="btn root-note">E</button></li>
+					<li><button class="btn root-note">F</button></li>
+					<li><button class="btn root-note">F#</button></li>
+					<li><button class="btn root-note">G</button></li>
+					<li><button class="btn root-note">G#</button></li>
+					<li><button class="btn root-note">A</button></li>
+					<li><button class="btn root-note">A#</button></li>
+					<li><button class="btn root-note">B</button></li>
+				</ul>
+
+				<!-- MusModes -->
+				<ul class="musmodes">
+					<li><button class="btn musmode" id='lydian'>Лидийский</button></li>
+					<li><button class="btn musmode" id='ionian'>Ионийский</button></li>
+					<li><button class="btn musmode" id='mixolydian'>Миксолидийский</button></li>
+					<li><button class="btn musmode" id='dorian'>Дорийский</button></li>
+					<li><button class="btn musmode" id='aeolian'>Эолийский</button></li>
+					<li><button class="btn musmode" id='phrydian'>Фридийский</button></li>
+					<li><button class="btn musmode" id='locrian'>Локрийский</button></li>
+				</ul>
+
+			</div> <!-- /HEADER BOX -->
+		</div> <!-- /CONTAINER -->
+	</header>
+	<!-- MAIN -->
+	<main class='main'>
+		<div class="majmin">
+		</div>
+		<!-- PIANO -->
+		<div class="piano">
+			<div class="container">
+				<div class="piano-box">
+					<div class="keyboard">
+						<!-- OCTAVE -->
+						<div class="octave">
+							<div class="key">C</div>
+							<div class="key key-black key-black-1">C#</div>
+							<div class="key">D</div>
+							<div class="key key-black key-black-2">D#</div>
+							<div class="key">E</div>
+							<div class="key">F</div>
+							<div class="key key-black key-black-3">F#</div>
+							<div class="key">G</div>
+							<div class="key key-black key-black-4">G#</div>
+							<div class="key">A</div>
+							<div class="key key-black key-black-5">A#</div>
+							<div class="key">B</div>
+						</div>
+						<!-- /OCTAVE -->
+						<!-- OCTAVE -->
+						<div class="octave">
+							<div class="key">C</div>
+							<div class="key key-black key-black-1">C#</div>
+							<div class="key">D</div>
+							<div class="key key-black key-black-2">D#</div>
+							<div class="key">E</div>
+							<div class="key">F</div>
+							<div class="key key-black key-black-3">F#</div>
+							<div class="key">G</div>
+							<div class="key key-black key-black-4">G#</div>
+							<div class="key">A</div>
+							<div class="key key-black key-black-5">A#</div>
+							<div class="key">B</div>
+						</div>
+						<!-- /OCTAVE -->
+						<!-- OCTAVE -->
+						<div class="octave">
+							<div class="key">C</div>
+							<div class="key key-black key-black-1">C#</div>
+							<div class="key">D</div>
+							<div class="key key-black key-black-2">D#</div>
+							<div class="key">E</div>
+							<div class="key">F</div>
+							<div class="key key-black key-black-3">F#</div>
+							<div class="key">G</div>
+							<div class="key key-black key-black-4">G#</div>
+							<div class="key">A</div>
+							<div class="key key-black key-black-5">A#</div>
+							<div class="key">B</div>
+						</div>
+						<!-- /OCTAVE -->
+						<!-- OCTAVE -->
+						<div class="octave">
+							<div class="key">C</div>
+							<div class="key key-black key-black-1">C#</div>
+							<div class="key">D</div>
+							<div class="key key-black key-black-2">D#</div>
+							<div class="key">E</div>
+							<div class="key">F</div>
+							<div class="key key-black key-black-3">F#</div>
+							<div class="key">G</div>
+							<div class="key key-black key-black-4">G#</div>
+							<div class="key">A</div>
+							<div class="key key-black key-black-5">A#</div>
+							<div class="key">B</div>
+						</div>
+						<!-- /OCTAVE -->
+					</div> <!-- /KEYBOARD -->
+				</div> <!-- /PIANO-BOX -->
+			</div> <!-- /CONTAINER -->
+		</div> <!-- /PIANO -->
+		<!-- /PIANO -->
+	</main>
+
+	<script type='module' src='./js/piano.js'></script>
+</body>
+
+</html>

@@ -1,0 +1,239 @@
+.main {
+	margin-top: 120px;
+	position: relative;
+}
+
+.majmin {
+	position: absolute;
+	top: -100px;
+	left: 180px;
+	font-size: 22px;
+	font-weight: 700;
+	color: #fff;
+	background-color: rgba(101, 109, 74, 0.6);
+	width: 100px;
+	height: 35px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 12px;
+}
+
+// GUITAR =============================
+
+.guitar-neck {
+	background-color: #a68a64;
+	border-top: 5px solid #582f0e;
+	border-bottom: 5px solid #582f0e;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.fret-numbers {
+	display: flex;
+}
+
+.fret-num {
+	text-align: center;
+	width: calc(1200px / 25);
+	height: 25px;
+	&:nth-child(4),
+	&:nth-child(6),
+	&:nth-child(8),
+	&:nth-child(10),
+	&:nth-child(13),
+	&:nth-child(16),
+	&:nth-child(18),
+	&:nth-child(20),
+	&:nth-child(23) {
+		color: red;
+	}
+}
+
+.guitar-string {
+	display: flex;
+	// VISUAL STRING
+	& .fret::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		right: 0;
+		transform: translateY(-50%);
+		background-color: #737171;
+		width: calc(100% + 6px);
+		z-index: 20;
+	}
+	&-1 .fret::after,
+	&-2 .fret::after,
+	&-3 .fret::after {
+		height: 2px;
+	}
+	&-4 .fret::after,
+	&-5 .fret::after,
+	&-6 .fret::after {
+		height: 3px;
+	}
+	// ^ VISUAL STRING ^
+
+	// CIRCLES
+	&-3 {
+		.fret-3,
+		.fret-5,
+		.fret-7,
+		.fret-9,
+		.fret-15,
+		.fret-17,
+		.fret-19,
+		.fret-22 {
+			&::before {
+				content: '';
+				position: absolute;
+				top: 100%;
+				right: 30%;
+				transform: translate(0, -50%);
+				background-color: #eee;
+				width: 20px;
+				height: 20px;
+				border-radius: 100px;
+			}
+		}
+		.fret-12 {
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 30%;
+				transform: translate(0, -50%);
+				background-color: #eee;
+				width: 20px;
+				height: 20px;
+				border-radius: 100px;
+			}
+		}
+	}
+	&-5 {
+		.fret-12 {
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 30%;
+				transform: translate(0, -50%);
+				background-color: #eee;
+				width: 20px;
+				height: 20px;
+				border-radius: 100px;
+			}
+		}
+	}
+	// CIRCLES
+}
+
+.fret {
+	position: relative;
+	background-color: transparent;
+	width: calc(1200px / 25);
+	height: calc(1200px / 25);
+	border-right: 3px solid #c9c3b1;
+	// Divide
+	// border-bottom: 1px dashed rgba(120, 101, 74, 0.2);
+	// Open strings
+	&-0 {
+		border-right: 6px solid #fff;
+		background-color: #7f4f24;
+	}
+}
+
+.point {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 700;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #a7bbec;
+	width: 30px;
+	height: 30px;
+	border-radius: 100px;
+	z-index: 999;
+	cursor: pointer;
+	transition: scale 0.2s ease-out, background-color 0.3s ease;
+	&:hover {
+		scale: 1.05;
+		background-color: #a0afd6;
+		color: red;
+	}
+}
+
+.guitar-head {
+	position: absolute;
+	top: -615px;
+	left: -850px;
+	display: none;
+}
+// GUITAR =============================
+
+// PIANO ==========================================
+.keyboard {
+	background-color: #582f0e;
+	width: 100%;
+	display: flex;
+}
+.octave {
+	border-top: 20px solid #222020;
+	border-bottom: 5px solid #363434;
+	display: flex;
+	position: relative;
+}
+
+.key {
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 300px;
+	width: 45px;
+	border: 1px solid #ede7e7;
+	background-color: #fff;
+	transition: background-color 0.2s ease;
+	&-black {
+		background-color: #000;
+		border: 0;
+		height: 230px;
+		width: 30px;
+		position: absolute;
+		top: 0;
+		color: #fff;
+		&-1 {
+			left: 30px;
+		}
+		&-2 {
+			left: 75px;
+		}
+		&-3 {
+			left: 165px;
+		}
+		&-4 {
+			left: 210px;
+		}
+		&-5 {
+			left: 255px;
+		}
+		&:hover {
+			background-color: #222020 !important;
+		}
+	}
+	&:last-child {
+		border-right: 3px solid #d8cfcf;
+	}
+	&:hover {
+		background-color: #edeaea;
+		color: #ff0000;
+	}
+}
+// ===================================== PIANO

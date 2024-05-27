@@ -1,0 +1,58 @@
+.header {
+	background-color: var(--header-color);
+	padding: 10px 0;
+}
+
+.header-box {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 5px;
+}
+
+.btn_instruments {
+	cursor: pointer;
+	img {
+		width: 35px;
+		height: 35px;
+	}
+}
+
+.btn.active-mode {
+	background-color: var(--active-color);
+	img {
+		filter: invert(1);
+		scale: 1.2;
+	}
+	transition: background-color 0.2s ease;
+	&:hover {
+		background-color: #747a5e;
+	}
+}
+
+.header_instr-mode {
+	display: flex;
+	width: 250px;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.header-tuning {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	width: 400px;
+}
+
+.musmodes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+}
+
+.root-notes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+}

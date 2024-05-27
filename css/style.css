@@ -1,0 +1,407 @@
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:300,regular,500,600,700);
+.header {
+  background-color: var(--header-color);
+  padding: 10px 0;
+}
+
+.header-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn_instruments {
+  cursor: pointer;
+}
+.btn_instruments img {
+  width: 35px;
+  height: 35px;
+}
+
+.btn.active-mode {
+  background-color: var(--active-color);
+  transition: background-color 0.2s ease;
+}
+.btn.active-mode img {
+  filter: invert(1);
+  scale: 1.2;
+}
+.btn.active-mode:hover {
+  background-color: #747a5e;
+}
+
+.header_instr-mode {
+  display: flex;
+  width: 250px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.header-tuning {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 400px;
+}
+
+.musmodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.root-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.main {
+  margin-top: 120px;
+  position: relative;
+}
+
+.majmin {
+  position: absolute;
+  top: -100px;
+  left: 180px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  background-color: rgba(101, 109, 74, 0.6);
+  width: 100px;
+  height: 35px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.guitar-neck {
+  background-color: #a68a64;
+  border-top: 5px solid #582f0e;
+  border-bottom: 5px solid #582f0e;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.fret-numbers {
+  display: flex;
+}
+
+.fret-num {
+  text-align: center;
+  width: 48px;
+  height: 25px;
+}
+.fret-num:nth-child(4), .fret-num:nth-child(6), .fret-num:nth-child(8), .fret-num:nth-child(10), .fret-num:nth-child(13), .fret-num:nth-child(16), .fret-num:nth-child(18), .fret-num:nth-child(20), .fret-num:nth-child(23) {
+  color: red;
+}
+
+.guitar-string {
+  display: flex;
+}
+.guitar-string .fret::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: #737171;
+  width: calc(100% + 6px);
+  z-index: 20;
+}
+.guitar-string-1 .fret::after, .guitar-string-2 .fret::after, .guitar-string-3 .fret::after {
+  height: 2px;
+}
+.guitar-string-4 .fret::after, .guitar-string-5 .fret::after, .guitar-string-6 .fret::after {
+  height: 3px;
+}
+.guitar-string-3 .fret-3::before,
+.guitar-string-3 .fret-5::before,
+.guitar-string-3 .fret-7::before,
+.guitar-string-3 .fret-9::before,
+.guitar-string-3 .fret-15::before,
+.guitar-string-3 .fret-17::before,
+.guitar-string-3 .fret-19::before,
+.guitar-string-3 .fret-22::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 30%;
+  transform: translate(0, -50%);
+  background-color: #eee;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+}
+.guitar-string-3 .fret-12::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 30%;
+  transform: translate(0, -50%);
+  background-color: #eee;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+}
+.guitar-string-5 .fret-12::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 30%;
+  transform: translate(0, -50%);
+  background-color: #eee;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+}
+
+.fret {
+  position: relative;
+  background-color: transparent;
+  width: 48px;
+  height: 48px;
+  border-right: 3px solid #c9c3b1;
+}
+.fret-0 {
+  border-right: 6px solid #fff;
+  background-color: #7f4f24;
+}
+
+.point {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #a7bbec;
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  z-index: 999;
+  cursor: pointer;
+  transition: scale 0.2s ease-out, background-color 0.3s ease;
+}
+.point:hover {
+  scale: 1.05;
+  background-color: #a0afd6;
+  color: red;
+}
+
+.guitar-head {
+  position: absolute;
+  top: -615px;
+  left: -850px;
+  display: none;
+}
+
+.keyboard {
+  background-color: #582f0e;
+  width: 100%;
+  display: flex;
+}
+
+.octave {
+  border-top: 20px solid #222020;
+  border-bottom: 5px solid #363434;
+  display: flex;
+  position: relative;
+}
+
+.key {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 45px;
+  border: 1px solid #ede7e7;
+  background-color: #fff;
+  transition: background-color 0.2s ease;
+}
+.key-black {
+  background-color: #000;
+  border: 0;
+  height: 230px;
+  width: 30px;
+  position: absolute;
+  top: 0;
+  color: #fff;
+}
+.key-black-1 {
+  left: 30px;
+}
+.key-black-2 {
+  left: 75px;
+}
+.key-black-3 {
+  left: 165px;
+}
+.key-black-4 {
+  left: 210px;
+}
+.key-black-5 {
+  left: 255px;
+}
+.key-black:hover {
+  background-color: #222020 !important;
+}
+.key:last-child {
+  border-right: 3px solid #d8cfcf;
+}
+.key:hover {
+  background-color: #edeaea;
+  color: #ff0000;
+}
+
+/* Reset and base styles  */
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Links */
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Common */
+aside,
+nav,
+footer,
+header,
+section,
+main {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button,
+input[type=submit] {
+  display: inline-block;
+  box-shadow: none;
+  background-color: transparent;
+  background: none;
+  cursor: pointer;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+label {
+  cursor: pointer;
+}
+
+legend {
+  display: block;
+}
+
+:root {
+  --bg-color: #c2c5aa;
+  --header-color: #656d4a;
+  --btn-color: #414833;
+  --active-color: #a4ac86;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: "Comfortaa", sans-serif;
+}
+
+.container {
+  padding: 0 20px;
+  width: 1240px;
+  margin: 0 auto;
+}
+
+.none {
+  display: none;
+}
+
+.btn {
+  border-radius: 12px;
+  color: #fff;
+  padding: 10px;
+  background-color: var(--btn-color);
+  transition: background-color 0.2s ease, scale 0.2s ease;
+}
+.btn:hover {
+  background-color: #333d29;
+  scale: 1.02;
+}/*# sourceMappingURL=style.css.map */
