@@ -88,8 +88,14 @@ musModeBtns.forEach(musModeBtn => {
 						key.innerText.toLowerCase() !== rootNote
 					) {
 						key.style.backgroundColor = '#ffe548';
+						if (key.classList.contains('key-black')) {
+							key.style.border = '1px solid #000';
+						}
 					} else if (key.innerText.toLowerCase() === rootNote) {
 						key.style.backgroundColor = '#ff4b3e';
+						if (key.classList.contains('key-black')) {
+							key.style.border = '1px solid #000';
+						}
 					}
 				});
 			});
@@ -107,7 +113,7 @@ musModeBtns.forEach(musModeBtn => {
 					keys.forEach(key => {
 						if (key.classList.contains('key-black')) {
 							key.style.backgroundColor = '#000';
-							console.log(key);
+							key.style.border = '0';
 						} else {
 							key.style.backgroundColor = '#fff';
 						}
