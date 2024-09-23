@@ -27,6 +27,8 @@ let notesCounter = 0;
 let guitarTuning = '';
 // Check if root note was picked
 let rootNote = '';
+// Contain musMode id
+let musModeContainer;
 
 // Tuning Picking script ===========================
 
@@ -48,7 +50,12 @@ tuningBtns.forEach(tuningBtn => {
 					notesCounter = 4;
 					frets = guitarStrings[i].querySelectorAll('.fret');
 					for (let j = 0; j < frets.length; j++) {
-						notesCounter = notesCounter >= notes.length ? 0 : notesCounter;
+						// notesCounter = notesCounter >= notes.length ? 0 : notesCounter;
+						if (notesCounter >= notes.length) {
+							notesCounter = 0;
+						} else {
+							notesCounter = notesCounter;
+						}
 
 						const point = document.createElement('div');
 						point.classList.add('point');
@@ -345,6 +352,10 @@ tuningBtns.forEach(tuningBtn => {
 			}
 		});
 		//  remove other non active btns
+
+		if (rootNote !== '' && musModeContainer !== undefined) {
+			displayMusMode(musModeContainer);
+		}
 	});
 });
 
@@ -369,106 +380,120 @@ function resetTuning() {
 
 rootNotesBtns.forEach(rootNoteBtn => {
 	rootNoteBtn.addEventListener('click', function (e) {
-		rootNote = `${rootNoteBtn.innerText.toLowerCase()}`;
-		rootNoteBtn.classList.add('active-mode');
-		rootNotesBtns.forEach(rootNoteBtnInner => {
-			if (rootNoteBtnInner !== rootNoteBtn) {
-				rootNoteBtnInner.classList.remove('active-mode');
-			}
-		});
+		e.preventDefault();
+		pickRootNote(rootNotesBtns, rootNoteBtn);
+
+		if (musModeContainer !== undefined) {
+			displayMusMode(musModeContainer);
+		}
 	});
 });
-
 // ======================== Root Note Picking script
+
+function pickRootNote(rootNotesBtns, rootNoteBtn) {
+	rootNote = `${rootNoteBtn.innerText.toLowerCase()}`;
+	rootNoteBtn.classList.add('active-mode');
+	rootNotesBtns.forEach(rootNoteBtnInner => {
+		if (rootNoteBtnInner !== rootNoteBtn) {
+			rootNoteBtnInner.classList.remove('active-mode');
+		}
+	});
+}
 
 // MusMode script ===================================
 musModeBtns.forEach(musModeBtn => {
 	musModeBtn.addEventListener('click', function (e) {
 		e.preventDefault();
-		if (guitarTuning === '') {
-			alert('Выбери строй!');
-		} else if (rootNote === '') {
-			alert('Выбери тональность!');
-		} else {
-			// work ================================
-			resetModes();
-			let musMode = musModeBtn.id;
-			musModeBtn.classList.add('active-mode');
+		musModeContainer = musModeBtn;
 
-			// --------------------------- MusMode MajorMinor
-			switch (musMode) {
-				case 'lydian':
-					antidepressantBox.innerText = 'major';
-					break;
-				case 'ionian':
-					antidepressantBox.innerText = 'major';
-					break;
-				case 'mixolydian':
-					antidepressantBox.innerText = 'major';
-				case 'dorian':
-					antidepressantBox.innerHTML = `<p>minor</p> <p>major</p>`;
-				case 'aeolian':
-					antidepressantBox.innerText = `minor`;
-				case 'phrydian':
-					antidepressantBox.innerText = `minor`;
-				case 'locrian':
-					antidepressantBox.innerText = `minor`;
-			}
-			// MusMode MajorMinor ---------------------------
-
-			// create arr with mode notes @@@@@@@@@@@@@@@
-			const musModeArr = [];
-			let modeCounter = notes.indexOf(rootNote);
-			for (let i = 0; i < 8; i++) {
-				modeCounter = modeCounter > 11 ? modeCounter - 12 : modeCounter;
-				console.log(modeCounter);
-				musModeArr.push(notes[modeCounter]);
-				modeCounter += musModes[`${musMode}`][i];
-				// console.log(musModes[`${musMode}`][i]);
-			}
-			console.log(musModeArr);
-
-			// @@@@@@@@@@@@@@@ create arr with mode notes
-			// Back Loop for strings
-			for (let s = guitarStrings.length - 1; s >= 0; s--) {
-				let frets = guitarStrings[s].querySelectorAll('.fret');
-				// Loop for frets check
-				for (let f1 = 0; f1 < frets.length; f1++) {
-					let p1 = frets[f1].querySelector('.point');
-
-					if (
-						musModeArr.includes(p1.innerText.toLowerCase()) &&
-						p1.innerText.toLowerCase() !== rootNote
-					) {
-						p1.style.backgroundColor = '#ffe548';
-					} else if (p1.innerText.toLowerCase() === rootNote) {
-						p1.style.backgroundColor = '#ff4b3e';
-					}
-				}
-				// Loop for frets check
-			}
-			// Back Loop for strings
-			// standart tune
-
-			musModeBtns.forEach(musModeBtnInner => {
-				if (musModeBtnInner !== musModeBtn) {
-					musModeBtnInner.classList.remove('active-mode');
-				}
-			});
-			// ================================= work
-		}
-		// Reset Function @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-		function resetModes() {
-			for (let i = 0; i < guitarStrings.length; i++) {
-				let frets = guitarStrings[i].querySelectorAll('.fret');
-				frets.forEach(fret => {
-					let p = fret.querySelector('.point');
-
-					p.style.backgroundColor = '#a7bbec';
-				});
-			}
-		}
-		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Reset Function
+		displayMusMode(musModeContainer);
 	});
 });
+
+function displayMusMode(musModeBtn) {
+	if (guitarTuning === '') {
+		alert('Выбери строй!');
+	} else if (rootNote === '') {
+		alert('Выбери тональность!');
+	} else {
+		// work ================================
+		resetModes();
+		let musMode = musModeBtn.id;
+		musModeBtn.classList.add('active-mode');
+
+		// --------------------------- MusMode MajorMinor
+		switch (musMode) {
+			case 'lydian':
+				antidepressantBox.innerText = 'major';
+				break;
+			case 'ionian':
+				antidepressantBox.innerText = 'major';
+				break;
+			case 'mixolydian':
+				antidepressantBox.innerText = 'major';
+			case 'dorian':
+				antidepressantBox.innerHTML = `<p>minor</p> <p>major</p>`;
+			case 'aeolian':
+				antidepressantBox.innerText = `minor`;
+			case 'phrydian':
+				antidepressantBox.innerText = `minor`;
+			case 'locrian':
+				antidepressantBox.innerText = `minor`;
+		}
+		// MusMode MajorMinor ---------------------------
+
+		// create arr with mode notes @@@@@@@@@@@@@@@
+		const musModeArr = [];
+		let modeCounter = notes.indexOf(rootNote);
+		for (let i = 0; i < 8; i++) {
+			modeCounter = modeCounter > 11 ? modeCounter - 12 : modeCounter;
+			console.log(modeCounter);
+			musModeArr.push(notes[modeCounter]);
+			modeCounter += musModes[`${musMode}`][i];
+			// console.log(musModes[`${musMode}`][i]);
+		}
+		console.log(musModeArr);
+
+		// @@@@@@@@@@@@@@@ create arr with mode notes
+		// Back Loop for strings
+		for (let s = guitarStrings.length - 1; s >= 0; s--) {
+			let frets = guitarStrings[s].querySelectorAll('.fret');
+			// Loop for frets check
+			for (let f1 = 0; f1 < frets.length; f1++) {
+				let p1 = frets[f1].querySelector('.point');
+
+				if (
+					musModeArr.includes(p1.innerText.toLowerCase()) &&
+					p1.innerText.toLowerCase() !== rootNote
+				) {
+					p1.style.backgroundColor = '#ffe548';
+				} else if (p1.innerText.toLowerCase() === rootNote) {
+					p1.style.backgroundColor = '#ff4b3e';
+				}
+			}
+			// Loop for frets check
+		}
+		// Back Loop for strings
+		// standart tune
+
+		musModeBtns.forEach(musModeBtnInner => {
+			if (musModeBtnInner !== musModeBtn) {
+				musModeBtnInner.classList.remove('active-mode');
+			}
+		});
+		// ================================= work
+	}
+	// Reset Function @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	function resetModes() {
+		for (let i = 0; i < guitarStrings.length; i++) {
+			let frets = guitarStrings[i].querySelectorAll('.fret');
+			frets.forEach(fret => {
+				let p = fret.querySelector('.point');
+
+				p.style.backgroundColor = '#a7bbec';
+			});
+		}
+	}
+	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Reset Function
+}
 // =================================== MusMode script
